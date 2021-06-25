@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+    elsa-dashboard:
+        build: .
+        environment:
+            - Elsa:Smtp:Host=smtp4dev
+            - ConnectionStrings:MongoDb=mongodb://mongodb
+        ports:
+            - "22174:80"
+        depends_on:
+            - mongodb
+            - smtp4dev
+
+    mongodb:
+        image: mongo
+        ports:
+            - "27017:27017"
+                
+    postgresql:
+        image: postgres
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+        ports:
+            - 5432:5432
+                
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@local
+            - PGADMIN_DEFAULT_PASSWORD=Pass123!
+            - PGADMIN_LISTEN_PORT=5050
+        ports:
+            - 5050:5050
+
+    smtp4dev:
+        image: rnwood/smtp4dev:linux-amd64-latest
+        ports:
+            - "3000:80"
+            - "2525:25"
+
+networks:
+    default:
