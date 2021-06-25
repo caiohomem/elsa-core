@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./src/core/Elsa/Elsa.csproj
+      run: dotnet restore src/core/Elsa/Elsa.csproj
     - name: Build
-      run: dotnet build ./src/core/Elsa/Elsa.csproj --no-restore
+      run: dotnet build src/core/Elsa/Elsa.csproj --no-restore
     - name: Publish  
       uses: brandedoutcast/publish-nuget@v2.5.2  
       with:   
-        PROJECT_FILE_PATH: Extensions/Extensions.csproj  
+        PROJECT_FILE_PATH: src/elsa-core/src/core/Elsa/Elsa.csproj  
         NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
