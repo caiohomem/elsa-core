@@ -20,7 +20,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build /src/elsa-core/src/core/Elsa/Elsa.csproj --no-restore
+      run: dotnet build ./src/elsa-core/src/core/Elsa/Elsa.csproj --no-restore
     - name: Publish  
       uses: brandedoutcast/publish-nuget@v2.5.2  
       with:   
