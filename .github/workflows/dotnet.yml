@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./src/elsa-core/src/core/Elsa/Elsa.csproj
     - name: Build
       run: dotnet build ./src/elsa-core/src/core/Elsa/Elsa.csproj --no-restore
     - name: Publish  
